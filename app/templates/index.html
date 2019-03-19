@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Магазин Ozon</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <a href="http://127.0.0.1:9876"><h1>Магазин книг Ozon</h1></a>
+            <form>
+                <div class="form-row">
+                    <div class="col">
+                            <div class="alert alert-info" role="alert">
+                                <input name="search" class="form-control" type="search" value="{{search}}">
+                            </div>
+                    </div>
+                </div>
+            </form>
+            <div class="alert alert-primary" role="alert">
+            <ul class="list-group mt-1">
+                {% for book in books %}
+                <li class="list-group-item">
+                    <b>{{book['title']}}</b> <em>Автор:</em> {{book['author']}}, <em>Цена:</em> {{book['price']}} руб. <em>Наличие:</em> {{book['availability']}} <em>Теги:</em> {{book['tags']}}
+                </li>
+                {% endfor %}
+            </ul>
+            {% if not books %}
+            <p>Нет книг</p>
+            {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
