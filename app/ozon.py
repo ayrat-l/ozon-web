@@ -13,11 +13,15 @@ def add_book(container, book):
     copy.append(book)
     return copy
 
-def search_book_by_title(container, title):
-    search_title = title.strip().lower()
+def search_book_by_title(container, search):
+    search_word = search.strip().lower()
     result = []
     for book in container:
-        if search_title in book['title'].lower() == title.lower():
+        if search_word in book['title'].lower():
+            result.append(book)
+        if search_word in book['tags']:
+            result.append(book)
+        if search_word in book['author'].lower():
             result.append(book)
     return result
 
