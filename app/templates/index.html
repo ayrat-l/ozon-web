@@ -28,7 +28,7 @@
             <ul class="list-group mt-1">
                 {% for book in books %}
                 <li class="list-group-item">
-                    <b>{{book['title']}}</b> <em>Автор:</em> {{book['author']}}, <em>Цена:</em> {{book['price']}} руб. <em>Наличие:</em> {{book['availability']}} <em>Теги:</em> {{book['tags']}}
+                    <b>{{book.title}}</b> <em>Автор:</em> {{book.author}}, <em>Цена:</em> {{book.price}} руб. <em>Наличие:</em> {{book.availability}} <em>Теги:</em> {{book.tags}}
                 </li>
                 {% endfor %}
             </ul>
