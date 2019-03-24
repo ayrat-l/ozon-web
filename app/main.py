@@ -1,16 +1,19 @@
+import os
+
+import waitress
 from flask import Flask, render_template, request
 
 from app.ozon import create_book, add_book, search_book_by_title
 
 
-def main():
+def start():
 
     app = Flask(__name__)
 
     container = []
-    wp = create_book('Война и Мир', 'Лев Толстой', 500, ['#война', '#любовь', '#толстой'], True)
-    anna = create_book('Анна Каренина', 'Лев Толстой', 400, ['#поезд', '#любовь', '#толстой'], False)
-    palata6 = create_book('Палата №6', 'Антон Чехов', 600, ['#больница', '#шесть', '#доктор'], True)
+    wp = create_book('Война и Мир', 'Лев Толстой', 500, True, ['#война', '#любовь', '#толстой'])
+    anna = create_book('Анна Каренина', 'Лев Толстой', 400, False, ['#поезд', '#любовь', '#толстой'])
+    palata6 = create_book('Палата №6', 'Антон Чехов', 600, True, ['#больница', '#шесть', '#доктор'])
 
     #TODO: сделать распаковку в add_book
 
@@ -26,8 +29,10 @@ def main():
             result = search_book_by_title(container, search)
             return render_template('index.html', books=result, search=search)
         return render_template('index.html', books=container)
-
-    app.run(port=9876, debug=True)
+    if os.getenv('APP_ENV') == 'PROD' and os.getenv('PORT'):
+        waitress.serve(app, port=os.getenv('PORT'))
+    else:
+        app.run(port=9876, debug=True)
 
 if __name__ == '__main__':
-    main()
+    start()

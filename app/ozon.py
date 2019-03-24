@@ -1,11 +1,10 @@
-def create_book(title, author, price, tags, availability):
+def create_book(title, author, price, availability, tags):
     return {
         'title': title,
         'author': author,
         'price': price,
-        'tags': tags,
         'availability': availability,
-
+        'tags': tags,
     }
 
 def add_book(container, book):
