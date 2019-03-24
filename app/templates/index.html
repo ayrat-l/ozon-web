@@ -28,13 +28,16 @@
             <ul class="list-group mt-1">
                 {% for book in books %}
                 <li class="list-group-item">
-                    <b>{{book.title}}</b> <em>Автор:</em> {{book.author}}, <em>Цена:</em> {{book.price}} руб. <em>Наличие:</em> {{book.availability}} <em>Теги:</em> {{book.tags|join(', ')}}
+                    <a href="{{ url_for('book_details', book_id = book.id) }}"><b>{{book.title}}</b></a> <em>Автор:</em> {{book.author}}, <em>Цена:</em> {{book.price}} руб. <em>Наличие:</em> {{book.availability}} <em>Теги:</em> {{book.tags|join(', ')}}
                 </li>
                 {% endfor %}
             </ul>
             {% if not books %}
             <p>Нет книг</p>
             {% endif %}
+                    <div class="mt-2">
+                <a href="{{ url_for('book_edit', book_id='new') }}" class="btn btn-primary">Добавить книгу</a>
+                    </div>
             </div>
         </div>
     </div>

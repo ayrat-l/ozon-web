@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+<form action="{{ url_for('book_save', book_id=book.id) }}" method="post">
+<div class="mt-1">
+    <li class="list-group-item">
+<input type="text" name="author" value="{{ book.author }}" name="author" placeholder="Автор" required><br/>
+<input type="text" name="title" value="{{ book.title }}" name="title" placeholder="Название книги" required><br/>
+<input type="text" name="price" value="{{ book.price }}" name="price" placeholder="Цена" required><br/>
+<input type="text" name="availability" value="{{ book.availability }}" name="availability" placeholder="Наличие" required><br/>
+<input type="text" name="tags" value="{{ book.tags }}" name="tags" placeholder="Теги" required>
+    <button>Сохранить</button>
+    </li>
+    </div>
+</form>
+</body>
+</html>
