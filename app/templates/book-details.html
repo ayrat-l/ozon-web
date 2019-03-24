@@ -10,17 +10,27 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
+<div class="container">
+    <div class="row">
+        <div class="col">
+<a href="/">На главную</a>
+<div class="alert alert-info" role="alert">
+    <b>Книга: {{ book.title }}</b></div>
 <div class="alert alert-primary" role="alert">
-    <a href="/">На главную</a>
-<h1>{{ book.title }}</h1>
+    <p><b>Автор:</b> {{ book.author }}</p>
+    <p><b>Цена:</b> {{ book.price }} руб.</p>
+    <p><b>Теги:</b> {{ book.tags|join(', ') }}</p>
 </div>
-<p>{{ book.author }}</p>
-
-<form action="{{ url_for('book_remove', book_id=book.id) }}" method="post">
-    <button>Удалить</button>
-</form>
+    <div class="mt-2">
+        <form action="{{ url_for('book_remove', book_id=book.id) }}" class="btn btn-warning" method="post">
+            <button>Удалить</button>
+        </form>
+    </div>
 <div class="mt-2">
-                <a href="{{ url_for('book_edit', book_id='book.id') }}" class="btn btn-primary">Добавить книгу</a>
-                    </div>
+    <a href="{{ url_for('book_edit', book_id='book.id') }}" class="btn btn-primary">Добавить книгу</a>
+</div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

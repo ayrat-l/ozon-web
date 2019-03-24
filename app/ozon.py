@@ -3,7 +3,7 @@ import uuid
 
 def create_book(title, author, price, availability, tags):
     return {
-        'id': 'new',
+        'id': str(uuid.uuid4()),
         'title': title,
         'author': author,
         'price': price,
@@ -13,7 +13,7 @@ def create_book(title, author, price, availability, tags):
 
 def create_empty_book():
     return {
-        'id': 'new',
+        'id': str(uuid.UUID()),
         'title': '',
         'author': '',
         'price': '',
