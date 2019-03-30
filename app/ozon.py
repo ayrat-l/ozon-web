@@ -13,7 +13,7 @@ def create_book(title, author, price, availability, tags):
 
 def create_empty_book():
     return {
-        'id': str(uuid.UUID()),
+        'id': 'new',
         'title': '',
         'author': '',
         'price': '',
